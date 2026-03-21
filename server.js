@@ -8,7 +8,7 @@ dotenv.config({ path: './config/config.env' });
 const restaurants = require('./routes/restaurant');
 const auth = require('./routes/auth');
 const reservations = require('./routes/reservation');
-
+const cors = require('cors');
 const { setServers } = require("node:dns/promises");
 
 setServers(["1.1.1.1", "8.8.8.8"]);
@@ -17,6 +17,7 @@ setServers(["1.1.1.1", "8.8.8.8"]);
 connectDB();
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 //Cookie parser
 app.use (cookieParser());
