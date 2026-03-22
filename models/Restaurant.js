@@ -40,8 +40,15 @@ const RestaurantSchema = new mongoose.Schema({
     close:{
         type: String,
         require: [true, 'Please add  a close time']
+    },
+    imageUrl: {
+        type: String,
+        required: true,
+        match: [
+            /^https?:\/\/.+/,
+            'Please add a valid URL with HTTP or HTTPS'
+        ]
     }
-    
 },{
     toJSON: {virtuals:true},
     toObject:{virtuals:true}
